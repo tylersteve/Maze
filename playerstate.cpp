@@ -1,9 +1,9 @@
 #include "playerstate.h"
 #include <iostream>
 
-PlayerState::PlayerState() : mPlayerShape()
+PlayerState::PlayerState(ResourceHolder<sf::Texture, int> &textures) : mPlayerShape()
 {
-    loadGraphics();
+    loadGraphics(textures);
     //mPlayerShape.setSize(sf::Vector2f(100,100));
     mPlayerShape.setPosition(100.0f,100.0f);
 }
@@ -77,15 +77,14 @@ void PlayerState::setMovingDown(bool movingDown)
     mMovingDown = movingDown;
 }
 
-void PlayerState::loadGraphics()
+void PlayerState::loadGraphics(ResourceHolder<sf::Texture, int> &textures)
 {
-    if (!mMainTexture.loadFromFile("graphics/player/Mouth.png")) {
-        std::cout << "Error load image into texture";
-    } else {
-        std::cout << "Loaded image into texture" << std::endl;
-        mPlayerShape.setTexture(mMainTexture);
-        mPlayerShape.setOrigin(mMainTexture.getSize().x/2,mMainTexture.getSize().y/2);
-    }
+    mMainTexture = textures.get(0);
+
+    std::cout << "Loaded image into texture" << std::endl;
+    mPlayerShape.setTexture(mMainTexture);
+    mPlayerShape.setOrigin(mMainTexture.getSize().x/2,mMainTexture.getSize().y/2);
+
 }
 
 

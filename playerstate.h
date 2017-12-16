@@ -3,11 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Vector2.hpp>
+#include "resourceholder.h"
 
 class PlayerState
 {
 public:
-    PlayerState();
+    PlayerState(ResourceHolder<sf::Texture,int> &textures);
 
     void move(sf::Time &deltaTime);
     void draw(sf::RenderWindow &renderWindow);
@@ -26,20 +27,19 @@ public:
 
 
 private:
-    bool mMovingLeft;
-    bool mMovingRight;
-    bool mMovingUp;
-    bool mMovingDown;
+    bool mMovingLeft = false;
+    bool mMovingRight = false;
+    bool mMovingUp = false;
+    bool mMovingDown = false;
     enum Direction {UP,DOWN,LEFT,RIGHT};
     Direction mDirection = RIGHT;
 
     sf::Vector2f mPosition;
     float mPlayerSpeed = 100.0f;
     sf::Sprite mPlayerShape;
-
     sf::Texture mMainTexture;
 
-    void loadGraphics();
+    void loadGraphics(ResourceHolder<sf::Texture,int> &textures);
 };
 
 #endif // PLAYERSTATE_H

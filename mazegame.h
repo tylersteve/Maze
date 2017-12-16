@@ -8,7 +8,7 @@
 class MazeGame
 {
 public:
-    MazeGame();
+    MazeGame(std::string basePath);
     ~MazeGame();
     void run();
 
@@ -20,6 +20,8 @@ private:
 
 private:
     sf::RenderWindow mWindow;
+    std::string basePath;
+
     sf::RectangleShape mPlayerShape;
     sf::Time TimePerFrame = sf::seconds(1.0f / 60.0f);
 

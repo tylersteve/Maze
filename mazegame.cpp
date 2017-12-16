@@ -1,12 +1,15 @@
 #include "mazegame.h"
 #include <SFML/System/Vector2.hpp>
+#include <iostream>
 
-MazeGame::MazeGame(): mWindow(sf::VideoMode(1024,768),"Maze")
+MazeGame::MazeGame(std::string basePath): mWindow(sf::VideoMode(1024,768),"Maze"),basePath(basePath)
 {
     mWindow.setVerticalSyncEnabled(true);
     mWindow.setMouseCursorVisible(false);
 
-    mTextures.loadResource(0,"graphics/player/Mouth.png");
+
+    std::cout << "this->basePath=" << this->basePath << std::endl;
+    mTextures.loadResource(0,basePath.append("/graphics/player/Mouth.png"));
 }
 
 MazeGame::~MazeGame()
@@ -16,7 +19,7 @@ MazeGame::~MazeGame()
 
 void MazeGame::run()
 {
-    player1 = new PlayerState();
+    player1 = new PlayerState(mTextures);
     sf::Clock clock;
     sf::Time timeSinceUpdate = sf::Time::Zero;
 
