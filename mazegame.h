@@ -3,6 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "playerstate.h"
+#include "resourceholder.h"
 
 class MazeGame
 {
@@ -23,6 +24,7 @@ private:
     sf::Time TimePerFrame = sf::seconds(1.0f / 60.0f);
 
     PlayerState *player1;
+    ResourceHolder<sf::Texture,int> mTextures;
 };
 
 #endif // MAZEGAME_H

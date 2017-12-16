@@ -6,6 +6,7 @@ MazeGame::MazeGame(): mWindow(sf::VideoMode(1024,768),"Maze")
     mWindow.setVerticalSyncEnabled(true);
     mWindow.setMouseCursorVisible(false);
 
+    mTextures.loadResource(0,"graphics/player/Mouth.png");
 }
 
 MazeGame::~MazeGame()
