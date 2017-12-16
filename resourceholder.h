@@ -5,6 +5,7 @@
 #include <map>
 #include <assert.h>
 #include <memory>
+#include <iostream>
 
 template <typename Resource, typename Identifier>
 class ResourceHolder
@@ -23,7 +24,7 @@ public:
         assert(inserted.second);
     }
 
-    Resource &ResourceHolder<Resource,Identifier>::get(Identifier id)
+    Resource& get(Identifier id)
     {
         auto found = mResourceMap.find(id);
         assert(found != mResourceMap.end());
