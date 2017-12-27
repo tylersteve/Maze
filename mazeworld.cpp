@@ -9,7 +9,7 @@ MazeWorld::MazeWorld(sf::RenderWindow &window, std::string basePath) : mBasePath
 
 void MazeWorld::update(sf::Time dt)
 {
-    mPlayer->move(dt);
+    mSceneGraph.update(dt);
 }
 
 void MazeWorld::draw()
@@ -19,7 +19,7 @@ void MazeWorld::draw()
 
 void MazeWorld::loadTextures()
 {
-    mTextures.loadResource(Textures::Player,mBasePath.append("/graphics/player/Mouth.png"));
+    mTextures.loadResource(Textures::Player,mBasePath.append("/graphics/player/MouthSprites_75x75.png"));
 }
 
 void MazeWorld::buildScene()
@@ -32,11 +32,11 @@ void MazeWorld::buildScene()
     }
 
     // Add the player to the player layer
-    std::unique_ptr<GamePlayer> player1(new GamePlayer(mTextures));
+    std::unique_ptr<GamePlayer> player1(new GamePlayer(mTextures,mWindow));
     mPlayer = player1.get();
     mSceneLayers[Layer::Player]->attachChild(std::move(player1));
     mPlayer->setPosition(200,200);
-    mPlayer->setVelocity(100,100);
+    mPlayer->setVelocity(0,0);
 }
 
 void MazeWorld::handleInput(sf::Keyboard::Key keyCode)

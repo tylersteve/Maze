@@ -2,7 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include <iostream>
 
-MazeGame::MazeGame(std::string basePath): mWindow(sf::VideoMode(1024,768),"Maze"),basePath(basePath),mMazeWorld(mWindow,basePath)
+MazeGame::MazeGame(std::string basePath): mWindow(sf::VideoMode(1024, 768),"Maze",sf::Style::None),basePath(basePath),mMazeWorld(mWindow,basePath)
 {
     mWindow.setVerticalSyncEnabled(true);
     mWindow.setMouseCursorVisible(false);
@@ -10,7 +10,6 @@ MazeGame::MazeGame(std::string basePath): mWindow(sf::VideoMode(1024,768),"Maze"
 
 MazeGame::~MazeGame()
 {
-    //delete player1;
 }
 
 void MazeGame::run()
@@ -37,12 +36,10 @@ void MazeGame::processEvents()
     while (mWindow.pollEvent(event)) {
         switch (event.type) {
             case sf::Event::KeyPressed:
-                //handleInput(event.key.code,true);
                 mMazeWorld.handleInput(event.key.code);
                 break;
 
             case sf::Event::KeyReleased:
-                //handleInput(event.key.code,false);
                 mMazeWorld.handleInput(event.key.code);
                 break;
 
