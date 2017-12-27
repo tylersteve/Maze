@@ -12,7 +12,11 @@ macx {
 
 SOURCES += main.cpp \
     mazegame.cpp \
-    playerstate.cpp
+    playerstate.cpp \
+    gameentity.cpp \
+    scenenode.cpp \
+    player.cpp \
+    mazeworld.cpp
 
 win32 {
     LIBS += -L"C:/Users/tyler/DEV/SFML-2.4.2/lib"
@@ -22,7 +26,7 @@ win32 {
     DEPENDPATH += "$$PWD/../SFML-2.4.2/include/"
 }
 
-unix {
+macos {
     LIBS += -L"/usr/local/lib"
     CONFIG(release, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-system -lsfml-network -lsfml-window
     CONFIG(debug, debug|release): LIBS += -lsfml-audio -lsfml-graphics -lsfml-system -lsfml-network -lsfml-window
@@ -37,4 +41,9 @@ unix {
 HEADERS += \
     mazegame.h \
     playerstate.h \
-    resourceholder.h
+    resourceholder.h \
+    gameentity.h \
+    scenenode.h \
+    player.h \
+    textures.h \
+    mazeworld.h

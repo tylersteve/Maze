@@ -6,6 +6,9 @@
 #include <assert.h>
 #include <memory>
 #include <iostream>
+#include "textures.h"
+
+
 
 template <typename Resource, typename Identifier>
 class ResourceHolder
@@ -31,13 +34,16 @@ public:
         return *found->second;
     }
 
-
-
+    const Resource& get(Identifier id) const
+    {
+        auto found = mResourceMap.find(id);
+        assert(found != mResourceMap.end());
+        return *found->second;
+    }
 
 private:
      std::map<Identifier,std::unique_ptr<Resource>> mResourceMap;
 };
 
-
-
+typedef ResourceHolder<sf::Texture,Textures::ID> TextureHolder;
 #endif // RESOURCEHOLDER_H
