@@ -19,11 +19,11 @@ SOURCES += main.cpp \
     mazeworld.cpp
 
 win32 {
-    LIBS += -L"C:/Users/tyler/DEV/SFML-2.4.2/lib"
+    LIBS += -L"$$PWD/../../SFML-2.4.2/build/lib"
     CONFIG(release, debug|release): LIBS += -lsfml-main -lsfml-audio -lsfml-graphics -lsfml-system -lsfml-network -lsfml-window
     CONFIG(debug, debug|release): LIBS += -lsfml-main-d -lsfml-audio-d -lsfml-graphics-d -lsfml-system-d -lsfml-network-d -lsfml-window-d
-    INCLUDEPATH += "$$PWD/../SFML-2.4.2/include/"
-    DEPENDPATH += "$$PWD/../SFML-2.4.2/include/"
+    INCLUDEPATH += "$$PWD/../../SFML-2.4.2/include/"
+    DEPENDPATH += "$$PWD/../../SFML-2.4.2/include/"
 }
 
 macos {
